@@ -1,11 +1,12 @@
 <script setup>
+    import { withBase } from 'vitepress'
     import { data } from './api.data.js'
 </script>
 
 # API Reference
 
 <div v-for="page in data">
-    <a :href="'/api/' + page">
+    <a :href="withBase('/api/' + page)">
         <p class="idx-link">{{ page }}</p>
     </a>
 </div>
