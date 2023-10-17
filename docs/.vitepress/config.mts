@@ -7,8 +7,6 @@ let page_meta = pages.filter((f) => { return (f !== '.git') && (f !== 'Home.md')
   return { text: file, link: "/api/" + file } 
 })
 
-console.log(pages, page_meta);
-
 // eslint-disable-next-line no-control-regex
 const rControl = /[\u0000-\u001f]/g;
 const rSpecial = /[\s~`!@#$%^&*()\-_+=[\]{}|\\;:"'“”‘’<>,.?/]+/g;
@@ -40,6 +38,7 @@ let cust_slugify = (str: string): string =>
 export default defineConfig({
   title: "CProcessing SG Wiki",
   description: ".",
+  lastUpdated: true,
   ignoreDeadLinks: true,
   markdown: {
     anchor: {
