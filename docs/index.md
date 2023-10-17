@@ -4,7 +4,7 @@ layout: home
 
 hero:
   name: "CProcessing SG Wiki"
-
+  tagline: "\nWelcome!\n\nIf you have documentation requests or suggestions, or if you find any errors, feel free to submit an issue or a pull request."
   actions:
     - theme: brand
       text: API Reference
@@ -13,4 +13,3 @@ hero:
       text: Get Started
       link: /guides/
 ---
-

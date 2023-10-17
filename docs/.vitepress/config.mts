@@ -2,10 +2,12 @@ import { defineConfig } from 'vitepress'
 import fs from "fs"
 
 let pages = fs.readdirSync("./api/");
-let page_meta = pages.filter((f) => { return f !== '.git'}).map((file) => {
+let page_meta = pages.filter((f) => { return (f !== '.git') && (f !== 'Home.md')}).map((file) => {
   file = file.replace(/\.[^/.]+$/, "")
   return { text: file, link: "/api/" + file } 
 })
+
+console.log(pages, page_meta);
 
 // eslint-disable-next-line no-control-regex
 const rControl = /[\u0000-\u001f]/g;
@@ -44,6 +46,7 @@ export default defineConfig({
       slugify: str => cust_slugify(str) 
     }
   },
+  srcExclude: ["/api/Home.md"],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     outline: [1,1],
