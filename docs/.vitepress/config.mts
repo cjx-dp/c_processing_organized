@@ -9,7 +9,8 @@ let page_meta = pages.filter((f) => { return (f !== '.git') && (f !== 'Home.md')
 
 // eslint-disable-next-line no-control-regex
 const rControl = /[\u0000-\u001f]/g;
-const rSpecial = /[\s~`!@#$%^&*()\-_+=[\]{}|\\;:"'“”‘’<>,.?/]+/g;
+const rSpecial = /[\s~`!@#$%^&*\-_+=[\]{}|\\;:"'“”‘’<>,.?/]+/g;
+const parentheses = /[()]+/g;
 const rCombining = /[\u0300-\u036F]/g;
 
 /**
@@ -24,6 +25,8 @@ let cust_slugify = (str: string): string =>
     .replace(rControl, '')
     // Replace special characters
     .replace(rSpecial, '_')
+    // Replace parentheses characters
+    .replace(parentheses, '')
     // Remove continuous separators
     .replace(/-{2,}/g, '_')
     // Remove prefixing and trailing separators
@@ -37,7 +40,6 @@ let cust_slugify = (str: string): string =>
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "CProcessing SG Wiki",
-  description: ".",
   lastUpdated: true,
   ignoreDeadLinks: true,
   markdown: {
