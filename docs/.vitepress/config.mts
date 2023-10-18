@@ -7,6 +7,8 @@ let page_meta = pages.filter((f) => { return (f !== '.git') && (f !== 'Home.md')
   return { text: file, link: "/api/" + file } 
 })
 
+// Copied from mdit-vue 
+
 // eslint-disable-next-line no-control-regex
 const rControl = /[\u0000-\u001f]/g;
 const rSpecial = /[\s~`!@#$%^&*\-_+=[\]{}|\\;:"'“”‘’<>,.?/]+/g;
@@ -40,6 +42,7 @@ let cust_slugify = (str: string): string =>
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "CProcessing SG Wiki",
+  description: "Documentation for CProcessing_SG",
   lastUpdated: true,
   ignoreDeadLinks: true,
   markdown: {
@@ -47,7 +50,7 @@ export default defineConfig({
       slugify: str => cust_slugify(str) 
     }
   },
-  srcExclude: ["/api/Home.md"],
+  srcExclude: ["readme.md","/api/Home.md"],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     outline: [1,1],
